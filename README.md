@@ -33,3 +33,7 @@ Upon the first boot og photocloud, all databases will be empty. Although you'll 
 Now, you'll be redirected to the log in page you were at before. Enter the username and password you just came up with, and click **Log In**.
 
 ## Uploading Images
+
+Once you're logged in, you'll be redirected to a mostly blank page. This is where your images would normally load, but you haven't uploaded any yet. You may have noticed that your navbar has changed since you logged in. Now there's an option to go back home (where you are right now), upload images, and a dropdown menu for your account that will let you change your password and log out. Right now, we want to upload some images. Click on the **Upload** link at the navbar.
+
+You'll be redirected to a page with two buttons: one will let you choose the files you want to upload, and the other will upload the files you've chosen. As stated above both buttons, the only file types you'll be able to upload include `.png`, `.jpg` and `.gif`. 

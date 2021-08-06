@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <header>
+        <!-- https://cdnjs.com/libraries/ekko-lightbox -->
+        <!-- lightbox css -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+        <!-- lightbox script-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+    </header>
+
+    <!-- PROMPT USER UPLOADS -->
+    <div class="mb-3">
+        <span class="brand"><i>YOUR IMAGES</i></span>
+    </div>
+    <div>
+        <p class="text-muted">All your images at a glance.</p>
+    </div>
+
+    <!-- LOAD USER IMAGES -->
+    <div class="card-columns mt-4">
+        {% for image in image_info %}
+            <div class="card bg-secondary">
+                <a href = "{{url_for('static',filename = "../" + image.location )}}" class="card-img-top" data-toggle="lightbox">
+                    <img src="{{url_for('static',filename = "../" + image.location )}}" class="img-fluid">
+                </a>
+                <div class="row">
+                    <div class="col-sm pt-2 ml-1">
+                        <p class="text-white-50">{{ image.filename }}</p>
+                    </div>
+                    <div class="col-sm">
+                        <form action="delete_file" method="post">
+                            <button class="btn btn-secondary float-right" name="delete_file_btn" value="{{ image.location }}">
+                                <span class="iconify" data-icon="mdi:trash-can"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- lightbox jquery -->
+    <script src="static/lightbox.js"></script>
+
+{% endblock %}

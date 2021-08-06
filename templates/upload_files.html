@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload Files
+{% endblock %}
+
+{% block main %}
+
+    <!-- PROMPT USER UPLOADS -->
+    <div class="mb-3">
+        <span class="brand"><i>UPLOAD IMAGES</i></span>
+    </div>
+    <div>
+        <p class="text-muted">Upload images with .png, .jpg, or .gif extensions.</p>
+    </div>
+    <form action="/upload_files" method=post enctype=multipart/form-data>
+         <input class="btn btn-outline-secondary mt-4" type=file name=file multiple>
+         <input class="btn btn-outline-primary mt-4" type=submit value=Upload>
+    </form>
+
+
+{% endblock %}

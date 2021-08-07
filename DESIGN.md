@@ -74,5 +74,55 @@ Require uses to log in before accessing certain pages.
 
 ## 'application.py'
 
+This is the main backend file that brings together everything from rendering the html to modifying the databases.
 
+At the start of the file is every library imported. As a quick overview:
 
+- `os` allows modifying files, making files, finding file paths
+- `SQL from cs50` allows making MySQL queries from Python
+- anything relating to `flask` allows rendering pages and stringing together the back and front end
+- assorted imports from `werkzeug` allow for running the http server, hashing user passwords, correctly getting filenames
+- `PIL` finds metadata of images, used when finding when pictures were taken
+- `datetime` allows converting time formats and finding the current time
+- `logging` allows debugging in the Python console
+- anything from `helpers` includes the functions mentioned for `helpers.py`
+
+Then, flask is configured to upload files and disable cache, and the database file is initialized.
+
+### index
+
+`index()` gets all the images from the current user, sorts them by either the time they were taken or the time they were uploaded (not all images include the time they were taken), and sends them off as a dictionary to render as `index.html`.
+
+### logout
+
+`logout()` allows users to logout by forgetting the user's id, and redirects the user to the login page. 
+
+### register
+
+This function grabs the information inputted by the form on `register.html`, such as the username, password and password confirmation, and runs tests to make sure everything is eligble to go into the database (ex. if the username, password and confirmation all exist, that the password and confirmation match each other)
+
+Then, a new user is added to the databse; the inputted username and password are recorded.
+
+### upload_files
+
+This function gets all the files the user uploaded from the `upload_files.html` form. It runs through each file uploaded, makes sure they have the right extensions, and tests if any are duplicates. If they are, a number is added to however many duplicates there already are. (Ex. if `image.png` is uploaded 3 times, the files will become `image1.png`, `image2.png`, and `image3.png`.
+
+Information about the files, such as the user id who uploaded them, time uploaded, taken, file path and file name are all stored in the images database. And, finally, the images themselves are stored in the uploads folder.
+
+Once all of this is done, `upload_files.html` is reloaded.
+
+### delete_file
+
+This function takes input from the trash can delete button in `index.html`, and removes the image from the uploads folder and images database. Once done, it reloads the `index()` function as to reload the page with data.
+
+### change_password
+
+This function takes input from the `change_password.html` input form. Similar to `register()`, it makes sure the user has entered the correct old password, and that they confirm their new password. If this is all true, it will update the database with the user's new password.
+
+### login
+
+Takes input from the `login.html` form. If the username inputted exists and the password matches, it'll log the user in.
+
+### allowed_file
+
+Function used in uploading files, makes sure whatever files it sees have allowed extensions (`.png`, `.jpg`, `.gif`)

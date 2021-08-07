@@ -2,6 +2,8 @@
 
 Photocloud is a minimalistic yet effetive web app for backing up and viewing images. Users can upload images to their dashboard. Here, they're organized based on when the pictures were taken (or if not, when they were uploaded), and users can delete them as they wish.
 
+Short video presentation: https://www.youtube.com/watch?v=kCITJu9uA70
+
 ## Languages
 
 Photocloud uses:

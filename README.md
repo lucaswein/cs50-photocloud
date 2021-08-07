@@ -17,7 +17,7 @@ Photocloud uses:
 1. Zip and install all necessary files uploaded.
 2. Extract the zipped file.
 3. Ensure python 3.9.1 is installed.
-4. Ensure all necessary python libraries (listed in the [requirements](requirements.md)) are installed.
+4. Ensure all necessary python libraries (listed in the [requirements](requirements.txt)) are installed.
 5. Open a terminal window in the unzipped folder.
 6. Run `flask run` to start the application.
 7. Open the link provided to get to the photocloud application.
